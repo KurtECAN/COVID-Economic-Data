@@ -9,15 +9,40 @@ CREATE TABLE canada_stats
   population number(8) not null,
   total_GDP number(10,2) not null,
   GDP_per_capita number(8,2) not null,
-  working_force number(7) not null,
-  unemployment_rate number(4,2) not null,
-  
+ 
   CONSTRAINT province_pk PRIMARY KEY (province_id)
   );
   
     
  BEGIN 
  
- INSERT INTO canada_stats (province_name, province_id, province_abbreviation, population, total_GDP, GDP_per_capita, working_force, unemployment_rate)
- VALUES ('Newfoundland and Labrador', 10, 'NFLD', 523476, 35349, 67527, 
-  
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Newfoundland and Labrador', 9, 'NL', 523476, 35349, 67527);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Nova Scotia', 7, 'NS', 969747, 46586, 47837);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Prince Edward Island', 10, 'PEI', 157262, 7523, 48039);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('New Brunswick', 8, 'NB', 776868, 38236, 49218);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Northwest Territories', 11, 'NWT', 45028, 4542, 100871);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Yukon', 12, 'YT', 41477, 3157, 76114);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Nunavut', 13, 'NT', 38614, 3689, 95535);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Quebec', 2, 'QC', 8501703, 460357, 54149);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Ontario', 1, 'ON', 14544718, 891811, 61315);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Manitoba', 5, 'MB', 1369540, 73814, 53897);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Saskatchewan', 6, 'SK', 1172302, 82917, 70730);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('Alberta', 4, 'AB', 4361694, 352844, 80905);
+ INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
+ VALUES ('British Columbia', 3, 'BC', 5090955, 309059, 60707);
+ 
+ END
+ 
+ commit; 
