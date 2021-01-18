@@ -1,5 +1,5 @@
 --Programming language: SQL
---Note that population data was acquired from 2016 census data
+--Create parent table with nationwide numbers
 
 CREATE TABLE canada_stats
 (
@@ -42,6 +42,55 @@ CREATE TABLE canada_stats
  VALUES ('Alberta', 4, 'AB', 4361694, 352844, 80905);
  INSERT INTO canada_stats (prov_terr_name, prov_terr_id, prov_terr_abbrev, population, total_GDP, GDP_per_capita)
  VALUES ('British Columbia', 3, 'BC', 5090955, 309059, 60707);
+ 
+ END
+ 
+ commit; 
+ 
+ --create child table with employment stats for 2020
+ 
+ CREATE TABLE employment_stats
+ 
+ (
+	prov_terr_name varchar2(50) not null, 
+	prov_terr_id number(2) not null, 
+	economic_id number(2) not null, 
+	employment_change number(4,2) not null,
+	unemployment_rate number(3,1) not null,
+	GDP_expenditure number(4,2) not null,
+	CPI_inflation number(4,2) not null, 
+	avg_weekly_earnings number(4,2) not null, 
+	
+	CONSTRAINT fk_prov_terr
+		FOREIGN KEY (prov_terr_id)
+		REFERENCES canada_stats(prov_terr_id) 
+		ON DELETE CASCADE,
+		
+	CONSTRAINT economic_pk PRIMARY KEY (economic_id)
+  );
+  
+ BEGIN 
+ 
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('Newfoundland and Labrador', 9, 10, 0.63, 12.3, 4.0, 0.8, 2.3);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('Nova Scotia', 7, 5, -1.44, 8.6, 2.4, 0.2, 6.5);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('Prince Edward Island', 10, 8, -4.38, 10.1, 5.1, -0.5, 8.9);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('New Brunswick', 8, 6, -0.06, 9.3, 1.2, -0.4, 4.2);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('Quebec', 2, 1, -2.04, 6.7, 2.7, 0.8, 7.9);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('Ontario', 1, 7, -3.32, 9.5, 2.1, 0.9, 7.5);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('Manitoba', 5, 4, -4.39, 8.2, 0.6, 0.6, 2.8);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('Saskatchewan', 6, 3, -4.42, 7.8, -0.7, 0.8, 3.6);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('Alberta', 4, 9, -5.68, 11.0, 0.1, 1.3, -0.4);
+ INSERT INTO employment_stats (prov_terr_name, prov_terr_id, economic_id, employment_change, unemployment_rate, GDP_expenditure, CPI_inflation, avg_weekly_earnings)
+ VALUES ('British Columbia', 3, 2, -1.44, 7.2, 2.7, 1.1, 7.4);
  
  END
  
