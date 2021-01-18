@@ -1,0 +1,23 @@
+--Programming language: SQL
+--Note that population data was acquired from 2016 census data
+
+CREATE TABLE canada_stats
+(
+  prov_terr_name varchar(50) not null, 
+  prov_terr_id number(2) not null, 
+  prov_terr_abbrev varchar(10) not null, 
+  population number(8) not null,
+  total_GDP number(10,2) not null,
+  GDP_per_capita number(8,2) not null,
+  working_force number(7) not null,
+  unemployment_rate number(4,2) not null,
+  
+  CONSTRAINT province_pk PRIMARY KEY (province_id)
+  );
+  
+    
+ BEGIN 
+ 
+ INSERT INTO canada_stats (province_name, province_id, province_abbreviation, population, total_GDP, GDP_per_capita, working_force, unemployment_rate)
+ VALUES ('Newfoundland and Labrador', 10, 'NFLD', 523476, 35349, 67527, 
+  
